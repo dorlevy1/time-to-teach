@@ -53,7 +53,7 @@ $teacher->insertNewTeacher();
 
         <label for="name">Name</label>
         <input type="text" name="name" id="name" placeholder="Your name ...">
-        <p>*Personal Name or Company Name</p>
+        <p>*Personal Name or Company Name!</p>
         
         <input type="submit" id="stageone" name="stageone" class="btn" value="Continue Next Stage"> 
     </div>
