@@ -1,0 +1,176 @@
+.form{
+    white-space: nowrap;
+    transition: all 0.2s;
+    will-change: transform;
+        position: absolute;
+        height: 300px;
+        right: -18px;
+}
+.big-div{
+    /* width: 100%; */
+    width: 25%;
+    margin: 0 auto;
+    position: absolute;
+    left: 38%;
+    /* left: 0%; */
+    height: 350px;
+    overflow: hidden;
+}
+
+.div{
+    display: flex;
+    margin: 0px 100px 0px 0px;
+    flex-direction: column;
+}
+
+form{
+    margin: 0px 100px 0px 0px;
+}
+.procces-bar,.procces-bar2{
+    width: 45%;
+    height: 50px;
+    margin: 0 auto;
+}
+.procces-bar2{
+    position: absolute;
+    z-index: -1;
+    width: 0%;
+    transition: all .6s;
+    top: 80px;
+    overflow: hidden;
+}
+.line2{
+    border: 2px solid #2cd231 !important;
+    /* width: 9%; */
+    transition: all .5s;
+    z-index: 1;
+    margin-top: 25px;
+    overflow: hidden;
+    /* position: relative; */
+
+}
+.line{
+    z-index: -1;
+    width: 100%;
+    border: 2px solid rgba(121, 121, 121);
+    margin-top: 25px;
+    position: relative;
+}
+
+.one{
+    position: absolute;
+    border: 1px solid;
+    width: 45px;
+    height: 45px;
+    top: -25px;
+    left: 4.7%;
+    border-radius: 30px;
+}
+
+.two{
+    position: absolute;
+    border: 1px solid;
+    width: 45px;
+    height: 45px;
+    top: -25px;
+    left: 30%;
+    border-radius: 30px;
+}
+
+.three{
+    position: absolute;
+    border: 1px solid;
+    width: 45px;
+    height: 45px;
+    top: -25px;
+    left: 55%;
+    border-radius: 30px;
+}
+
+
+.four{
+    position: absolute;
+    border: 1px solid;
+    width: 45px;
+    height: 45px;
+    top: -25px;
+    left: 80%;
+    border-radius: 30px;
+}
+.one2{
+    position: absolute;
+    border: 1px solid;
+    width: 45px;
+    height: 45px;
+    left: 5%;
+    border-radius: 30px;
+}
+
+.two2{
+    position: absolute;
+    border: 1px solid;
+    width: 45px;
+    height: 45px;
+    left: 30%;
+    border-radius: 30px;
+}
+
+.three2{
+    position: absolute;
+    border: 1px solid;
+    width: 45px;
+    height: 45px;
+    left: 55%;
+    border-radius: 30px;
+}
+
+
+.four2{
+    position: absolute;
+    border: 1px solid;
+    width: 45px;
+    height: 45px;
+    left: 80%;
+    border-radius: 30px;
+}
+.one2,.two2,.three2,.four2{
+    padding-left: 16px;
+    padding-top: 5px;
+    top: 2px;
+    font-size: 20px;
+}
+.otef-492{
+    width: 492px !important;
+}
+.otef{
+    width: 582px;
+    height: 50px;
+    border: 1px solid white;
+    position: relative;
+}
+
+.one,.two,.three,.four{
+    padding-left: 16px;
+    padding-top: 5px;
+    font-size: 20px;
+}
+
+.bgc-white{
+    background: white;
+}
+.bgc-white2{
+    background: #2cd231;
+}
+.btn{
+    border-radius: 30px;
+    border: 1px solid #17c717;
+    background: #17c717;
+    padding: 5px;
+    cursor: pointer;
+    transition: all .6s;
+    box-shadow: 3px 4px 31px -3px #7d7979;
+}
+.btn:hover{
+    transform: scale(0.93);
+}
+

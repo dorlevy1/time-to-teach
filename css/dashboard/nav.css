@@ -1,0 +1,214 @@
+*{
+    font-family: 'MuseoModerno', cursive;
+}
+.top-nav{
+    height: 60px;
+    /* border: 1px solid; */
+    width: 80%;
+    transition: all 1s;
+    position: relative;
+    background: #d8d830;    box-shadow:8px 5px 20px 0px #777777ad;;
+
+}
+
+.flex-reverse{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.left-side{
+    width: 50%;
+    align-items: center;
+    margin-left: 15px;
+
+}
+.left-nav{
+    transition: all 1s;
+    /* border: 1px solid; */
+    width: 20%;
+    background: #9296b366;
+    min-height: 657px;
+    left: 0;
+    box-shadow:-8px -20px 20px 14px #77777752;
+}
+
+.left-right{
+    justify-content: space-between;
+}
+.personal{
+    width: 150px;
+    height: 35px;
+    margin-right: 30px;
+    margin-top: 15px;
+}
+.email{
+width: 35px;
+}.email>img{
+
+    margin-top: 5px;
+    width: 30px;
+}
+.settings{}
+.settings>img{
+    margin-top: 6.5px;
+    width: 25px;
+}
+.icon{
+align-items: center;
+}
+.icon>img{
+    width: 35px;
+    margin-top: 3px;
+}
+.w33{
+    width: 33%;
+}
+.ic{
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    margin-right: 20px;
+}
+.my_pic{
+    transition: all .6s;
+    border: 1px solid #9c9c9c87;    /* margin-top: 15%; */
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    margin: 5% auto;
+    background-size: 100% 100%;
+}
+.left-nav>p{
+    transition: all .6s;
+    text-align: center;
+}
+.menu{
+    width: 100%;
+    transition: all .7s;
+    /* border: 1px solid; */
+    margin: 20px auto;
+    min-height: 50%;
+}
+
+ul{
+    width: 100%;
+    margin: 20px auto;
+    min-height: 50%;
+    list-style-type: none;
+}
+ul>li{
+
+}
+.link{
+    display: flex; 
+    margin: 0 auto;
+    width: 80%;
+    padding: 30px 0px 5px;
+    /* border-bottom: 1px solid; */
+    text-align: center;
+    /* flex-direction: row; */
+    align-items: center;
+}
+
+ul>li>.link>a{
+    text-decoration: none;
+    width: 80%;
+    transition: all .6s;
+    margin-bottom: 8px;
+    transition: all .6s;
+    margin-right: 100px;
+    color: black;
+}
+a:hover{
+    color: black;
+}
+ul>li:hover{
+    transition: all .6s;
+background-color: rgba(112, 214, 255, 0.308);
+}
+.active{
+    background-color: rgba(112, 214, 255, 0.308);
+
+}
+.link>img{
+    margin-bottom: 10px;
+    width: 35px;
+}
+
+.search{
+    margin: 0 0px 0px 15px;    position: relative;
+    width: 100%;
+}
+.search>input{
+    background-color: #ffffff96;
+    padding: 5px;
+    width: 50%;
+    border-radius: 20px;
+    border: 1px solid grey;
+}
+.search>img{
+    position: absolute;
+    width: 20px;
+    transform: rotate(75deg);
+    left: 45%;
+    top: 11%;
+}
+
+:focus{
+    outline: none !important;
+}
+
+.hamm{
+    width: 35px;
+    background: #bebeff54;}
+
+
+.fixed{
+        position: fixed;
+    z-index: 5;
+}
+
+.tactive{
+width: 100%;
+z-index: 6;
+}
+
+.lpactive{
+    opacity: 0;
+}
+.lpsiactive{
+opacity: 0 !important;
+}
+.llaactive{
+    transition: all .1s;
+opacity: 0;}
+.mactive{
+    margin: -60px auto;
+}
+.lactive{
+    width: 5%;
+}
+.tpactive{
+    width: 25%;
+}
+.mpactive{
+opacity: 0;
+}
+.bactive{
+    width: 95% !important;
+    left:5% !important;
+}
+.displayblock{
+    display:block;
+}
+.displaynone{
+    display: none;
+}
+.opa{
+    opacity:1 !important;
+}
+
+.title{
+    text-align: center;
+margin-top: 30px;
+}
