@@ -4,13 +4,20 @@
          header: {
              left: 'prev,next today',
              center: 'title',
-             right: 'month,agendaWeek'
+             right: 'month'
          },
-         defaultView: 'agendaWeek',
          selectable: true,
          selectHelper: true,
          allDaySlot: false,
          eventBackgroundColor: getRandomColor(),
+         eventDidMount: function(info) {
+             var tooltip = new Tooltip(info.el, {
+                 title: info.event.extendedProps.description,
+                 placement: 'top',
+                 trigger: 'hover',
+                 container: 'body'
+             });
+         },
          events: '../../handler/fetchHandler.php',
 
          select: function(start, end) {
