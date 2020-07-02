@@ -150,10 +150,6 @@ These styles only apply when the standard-theme is activated.
 When it's NOT activated, the fc-button classes won't even be in the DOM.
 */
 
-.fc {
-    /* reset */
-}
-
 .fc .fc-button {
     border-radius: 0;
     overflow: visible;
