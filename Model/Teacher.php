@@ -4,13 +4,8 @@ class Teacher{
    public $db;
    
    function __CONSTRUCT(){
-      $this->db = new PDO(DBCON, USR,PSW);
-      // $sql = $this->db->prepare("INSERT INTO tests (test) VALUES(?)");
-      //  if($sql->execute(['testt'])){
-      //     echo 'goodie';
-      //  }else{
-      //     echo 'no goodie';
-      //  }
+      $this->db = new PDO(DBCON, USR,PSW); //
+
     }
 
     function insertNewTeacher(){
