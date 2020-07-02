@@ -1,3 +1,0 @@
-<?php
-
-test  testr bdfbdbdbbdbdbd
