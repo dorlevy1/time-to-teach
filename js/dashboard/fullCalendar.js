@@ -91,8 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if ($('.duration_pick>h5.activate').text() == '2') {
             var timeAfter = parseInt($('.time_pick>.activate').text()) + 2;
         }
+        var newEnd = $('form>h1').text() + '' + timeAfter + ':00:00';
         time = time.split(':');
-        var start = $('form>h1').text() + '' + time[0] + ':00';
+        var start = $('form>h1').text() + '' + time + ':00';
         if ($('.duration_pick>h5.activate').text() == '1/2') {
             var newEnd = $('form>h1').text() + '' + time[0] + ':30:00';
         } else if ($('.duration_pick>h5.activate').text() == '3/4') {
