@@ -20,6 +20,7 @@ class Calendar{
         $sql->bindParam(5,$color);
         $sql->execute();
 
+
     }
 
     function InsertNewClassGoogle($title,$key,$start,$end){
