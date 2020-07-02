@@ -65,12 +65,6 @@ class User{
             }
 // var_dump($users);
         }
-    function RequestBecomeStudent(){
-$sql= $this->db->prepare("INSERT INTO requests (teacher_id,user_id) VALUES (? , ?)");
-$sql->bindParam(1,$_POST['teacher_id']);
-$sql->bindParam(2,$_SESSION['user_id']);
-$sql->execute();
-    }
 
     
     function updateUser(){
@@ -83,23 +77,34 @@ $sql->execute();
         $sql->bindParam(6,$_SESSION['user_id']);
         $sql->execute();
     }
-    
+         
+    function fetchUserDetails(){
+        $sql= $this->db->prepare("SELECT * FROM user_details WHERE user_details.user_id = ?");
+        $sql->bindParam(1,$_SESSION['user_id']);
+        $sql->execute();
+        $d =$sql->fetchAll(PDO::FETCH_ASSOC);
+            $data[]=[
+               'hours'=> $d[0]['available_hours'],
+               'class_options'=> $d[0]['class_option'],
+               'days'=> $d[0]['available_days']
+            ];
+        $data[0]['hours']=explode(',',$data[0]['hours']);
+        $data[0]['class_options']=explode(',',$data[0]['class_options']);
 
+for ($i=0; $i < count($data[0]['hours']) ; $i++) { 
+    $data[0]['hours'][$i] .= ':00';
+}
+
+return $data;
+    }
     function fecthPersonalDetails(){
         $sql= $this->db->prepare("SELECT * FROM users WHERE id = ?");
         $sql->execute([$_SESSION['user_id']]);
     
-       return $sql->fetchAll(PDO::FETCH_ASSOC);
-       
+      return  $sql->fetchAll(PDO::FETCH_ASSOC);
+     
     }
-    
-    function fecthUserDetails(){
-        $sql= $this->db->prepare("SELECT * FROM users WHERE id = ?");
-        $sql->bindParam(1,$_GET['id']);
-        $sql->execute();
-        return $sql->fetch();
-        
-    }
+
  
 
 

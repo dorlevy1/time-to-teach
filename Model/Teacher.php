@@ -54,6 +54,8 @@ else
 }
 
    }
+
+
     function insertNewTeacherClass(){
         $sql = $this->db->prepare("INSERT INTO teacher_class (user_id,study_category,freeday,films,hoursavailable) VALUES (?,?,?,?,?) ");
         $sql->bindParam(1,$_SESSION['user_id']);
@@ -78,8 +80,8 @@ else
      }
      
      function fetchTeacherDetails(){
-        $sql= $this->db->prepare("SELECT * FROM users,teachers WHERE teachers.user_id = ?");
-        $sql->bindParam(1,$_GET['id']);
+        $sql= $this->db->prepare("SELECT * FROM user_details WHERE user_details.user_id = ?");
+        $sql->bindParam(1,$_SESSION['user_id']);
         $sql->execute();
         $teacher = $sql->fetch();
      }
