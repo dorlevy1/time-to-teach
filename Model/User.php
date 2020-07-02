@@ -1,6 +1,6 @@
 <?php
 require_once 'Connection.php';
-class User{
+class User{//
     public $db;
 
     function __construct(){
