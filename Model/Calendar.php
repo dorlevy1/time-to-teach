@@ -2,6 +2,7 @@
 require_once 'Connection.php';
 class Calendar{
     public $db;
+
     static $hours =['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'];
     function __construct(){
     $this->db = new PDO(DBCON, USR,PSW);
@@ -19,7 +20,6 @@ class Calendar{
         $sql->bindParam(4,$end);
         $sql->bindParam(5,$color);
         $sql->execute();
-
 
     }
 
@@ -64,10 +64,11 @@ if($r['key_id'] == $key){
         echo json_encode($data);
     }
     function fetchLastInsertLesson(){
-        $sql =$this->db->prepare("SELECT * FROM classes WHERE classes.title = ? ORDER BY start_class DESC LIMIT 1");
+        $sql =$this->db->prepare("SELECT * FROM classes WHERE classes.title = ? ORDER BY classes.id DESC LIMIT 1");
         $sql->execute(['Lesson']);
       return  $result =$sql->fetchAll();
     }
+    
 }
 
 
