@@ -66,10 +66,10 @@ function getClient()
 $client = getClient();
 $service = new Google_Service_Calendar($client);
 
-// Print the next 10 events on the user's calendar.
+// Print the next 1 event on the user's calendar.
 $calendarId = 'primary';
 $optParams = array(
-  'maxResults' => 200,
+  'maxResults' => 10,
   'orderBy' => 'startTime',
   'singleEvents' => true,
   'timeMin' => date('c'),
@@ -82,13 +82,9 @@ $events = $results->getItems();
 // Change the scope to Google_Service_Calendar::CALENDAR and delete any stored
 // credentials.
 
-if(isset($_POST['start'])){
-    $title = $_POST['start']; 
-}else{
-    $title='Dor';
-}
+
 $event = new Google_Service_Calendar_Event(array(
-    'summary' => $title,
+    'summary' => 'Dor',
     'location' => 'Holon',
     'description' => 'A chance to hear more about Google\'s developer products.',
     'start' => array(
@@ -118,22 +114,22 @@ $event = new Google_Service_Calendar_Event(array(
   $calendarId = 'primary';
   if(isset($_POST['submit'])){
       $event = $service->events->insert($calendarId, $event);
-      $calendar->InsertNewClassGoogle($event->getSummary(),$event->id,$start,$end);
       //  printf('Event created: ');
       //  print '<br>';
       //  printf($event->htmlLink);
       header('Location: /timetoteach/view/dashboard/my_calendar.php');
     }
     if (empty($events)) {
-        //   print "No upcoming events found.\n";
+      //   print "No upcoming events found.\n";
     } else {
-        // print " <br>Upcoming events: <br>";
-        foreach ($events as $event) {
-            $start = $event->start->dateTime;
-            $end = $event->end->dateTime;
-            if (empty($start)) {
-                $start = $event->start->date;
-            }
+      // print " <br>Upcoming events: <br>";
+      foreach ($events as $event) {
+        $start = $event->start->dateTime;
+        $end = $event->end->dateTime;
+        if (empty($start)) {
+          $start = $event->start->date;
+        }
+        $calendar->InsertNewClassGoogle($event->getSummary(),$event->id,$start,$end);
         // printf("%s %s (%s)\n", $event->getSummary(), $event->getDescription(), $start);
             // print'<br>';
         }
