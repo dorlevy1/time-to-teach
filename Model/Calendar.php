@@ -24,12 +24,13 @@ class Calendar{
     }
 
     function InsertNewClassGoogle($title,$key,$start,$end){
-//         $sql =$this->db->prepare("SELECT key_id FROM classes");
-//         $sql->execute();
-//         $r= $sql->fetch();
-// if($r['key_id'] == $key){
-//     var_dump('dor');
-// }else if($r['key_id'] !== $key){
+        $sql =$this->db->prepare("SELECT key_id FROM classes");
+        $sql->execute();
+        $r= $sql->fetch();
+if($r['key_id'] == $key){
+    var_dump('dor');
+    // header('Location: ./');
+}else{
     $sql =$this->db->prepare("INSERT INTO classes(title,key_id,start_class,end_class) VALUES(?,?,?,?)");
     // $sql->bindParam(1,$_SESSION['user_id']);
     $sql->bindParam(1,$title);
@@ -37,7 +38,7 @@ class Calendar{
     $sql->bindParam(3,$start);
     $sql->bindParam(4,$end);
     $sql->execute();
-// }
+}   
             
         }
     
@@ -61,6 +62,11 @@ class Calendar{
             );    
         }
         echo json_encode($data);
+    }
+    function fetchLastInsertLesson(){
+        $sql =$this->db->prepare("SELECT * FROM classes WHERE classes.title = ? ORDER BY start_class DESC LIMIT 1");
+        $sql->execute(['Lesson']);
+      return  $result =$sql->fetchAll();
     }
 }
 

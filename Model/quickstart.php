@@ -2,6 +2,11 @@
 require 'vendor/autoload.php';
 require_once 'Calendar.php';
 $calendar = new Calendar();
+$one = $calendar->fetchLastInsertLesson();
+$start = str_replace(' ','T',$one[0]['start_class']); 
+$end = str_replace(' ','T',$one[0]['end_class']); 
+var_dump($start);
+var_dump($end);
 /*
 if (php_sapi_name() != 'cli') {
     throw new Exception('This application must be run on the command line.');
@@ -69,7 +74,7 @@ $service = new Google_Service_Calendar($client);
 // Print the next 1 event on the user's calendar.
 $calendarId = 'primary';
 $optParams = array(
-  'maxResults' => 10,
+  'maxResults' => 200,
   'orderBy' => 'startTime',
   'singleEvents' => true,
   'timeMin' => date('c'),
@@ -84,16 +89,16 @@ $events = $results->getItems();
 
 
 $event = new Google_Service_Calendar_Event(array(
-    'summary' => 'Dor',
+    'summary' => $one[0]['title'],
     'location' => 'Holon',
     'description' => 'A chance to hear more about Google\'s developer products.',
     'start' => array(
-      'dateTime' => '2020-06-29T09:00:00',
-      'timeZone' => 'America/Los_Angeles',
+      'dateTime' => $start,
+      'timeZone' => 'Asia/Jerusalem',
     ),
     'end' => array(
-      'dateTime' => '2020-06-29T17:00:00',
-      'timeZone' => 'America/Los_Angeles',
+      'dateTime' => $end,
+      'timeZone' => 'Asia/Jerusalem',
     ),
     'recurrence' => array(
       'RRULE:FREQ=DAILY;COUNT=1'
@@ -112,26 +117,28 @@ $event = new Google_Service_Calendar_Event(array(
   ));
   
   $calendarId = 'primary';
-  if(isset($_POST['submit'])){
       $event = $service->events->insert($calendarId, $event);
-      //  printf('Event created: ');
-      //  print '<br>';
-      //  printf($event->htmlLink);
-      header('Location: /timetoteach/view/dashboard/my_calendar.php');
-    }
+       printf('Event created: ');
+       print '<br>';
+       printf($event->htmlLink);
+      // header('Location: /timetoteach/view/dashboard/my_calendar.php');
+    
     if (empty($events)) {
-      //   print "No upcoming events found.\n";
+        print "No upcoming events found.\n";
     } else {
-      // print " <br>Upcoming events: <br>";
+      print " <br>Upcoming events: <br>";
       foreach ($events as $event) {
         $start = $event->start->dateTime;
         $end = $event->end->dateTime;
         if (empty($start)) {
           $start = $event->start->date;
         }
-        $calendar->InsertNewClassGoogle($event->getSummary(),$event->id,$start,$end);
+        // var_dump(count($events));
+        if($events > count($events)){
+          // $calendar->InsertNewClassGoogle($event->getSummary(),$event->id,$start,$end);
+        }
         // printf("%s %s (%s)\n", $event->getSummary(), $event->getDescription(), $start);
-            // print'<br>';
+        //     print'<br>';
         }
     }
     ?>
