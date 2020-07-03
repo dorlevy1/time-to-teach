@@ -1,93 +1,88 @@
-
-
-    .best-teachers{
-min-width: 35%;
+.best-teachers {
+    min-width: 35%;
     height: 150px;
     margin-left: 5px;
     background-color: #e6e6e6;
     margin-top: 20px;
 }
-    .teacher-pic{
-        width: 30%;
-        height: 75%;
-        transition: 1s all;
-        border: 1px solid #9e9e9ee8;
-        border-radius: 90px;
-        margin-left: 10px;
-        margin-top: 15px;
-        margin-right: 10px;
-    }
-    
 
-    .description_teacher{
-        display: flex;
+.teacher-pic {
+    width: 30%;
+    height: 75%;
+    transition: 1s all;
+    border: 1px solid #9e9e9ee8;
+    border-radius: 90px;
+    margin-left: 10px;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.description_teacher {
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
-    }
+}
 
-    .ganres{
-        width: 90%;
+.ganres {
+    width: 90%;
     min-height: 250px;
     flex-wrap: wrap;
     margin: -25px auto;
+}
 
-    }
-
-    .box-class{
-        position: relative;
-
-        border: 1px solid white;
+.box-class {
+    position: relative;
+    border: 1px solid white;
     width: 33.33%;
     min-height: 200px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    }
+}
 
-    .ganre-shadow{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: #38383891;
-        transition: all 1s;
-    }
+.ganre-shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #38383891;
+    transition: all 1s;
+}
 
-    .ganre-shadow:hover{
-        background:none;
-    }
+.ganre-shadow:hover {
+    background: none;
+}
 
+.btlr30>.title {
+    color: white;
+}
 
+.top {
+    height: 200px;
+    width: 75%;
+    margin: 20px auto 0px auto;
+}
 
-    .btlr30>.title{
-        color: white;
-    }
-
-      
-
-
-    
-
-    .top{
-        height: 200px;
-        width: 75%;
-        margin: 20px auto 0px auto;
-    }
-
-    .box-top{
-        width: 33%;
+.box-top {
+    width: 33%;
     margin: 0px 3px;
     height: 65%;
+}
 
-    }
+.box-top>.title {
+    background: #ffffff8a;
+}
 
-    .box-top>.title{
-        background: #ffffff8a;
-    }
+.ganre-shadow>.icon {
+    text-align: center;
+    border: 1px solid rgba(105, 105, 105, 0.83);
+    border-radius: 30px;
+    padding: 10px;
+    width: 100px;
+    transition: all .6s;
+    margin: 0 auto;
+}
 
-    .ganre-shadow>.icon{
-        text-align: center;
-border: 1px solid rgba(105, 105, 105, 0.83);
-border-radius: 30px;
-padding: 10px;
-width: 100px;
-margin: 0 auto;
-    }
+.ganre-shadow:hover .icon {
+    transition: all .6s;
+    background: white;
+    border: 1px solid white;
+}
