@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
         allDaySlot: false,
         dayMaxEvents: true,
         eventBackgroundColor: getRandomColor(),
-        events: '../../handler/fetchHandler.php',
+        events: {
+            url: '../../handler/fetchHandler.php',
+        },
+
         dateClick: function(arg) {
             $('form>h1').html(arg.dateStr + ' ');
         },
@@ -47,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
             $('#submit').on('click', (e) => {
-                e.preventDefault();
+                // e.preventDefault();
                 insertEvent();
                 window.location.replace('my_calendar');
             })

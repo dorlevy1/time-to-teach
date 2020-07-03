@@ -1,19 +1,23 @@
 <?php
 session_start();
 require_once '../../Model/User.php';
-require_once '../../Model/Calendar.php';
 require '../../Model/quickstart.php';
 $user=new User();
-
+$quick = new quick();
 $usr = $user->fecthPersonalDetails()[0];
 $detail = $user->fetchUserDetails();
 // var_dump($detail);
 $calendar = new Calendar();
 $hours = $detail[0]['hours'];
 $class = $detail[0]['class_options'];
+$one = $calendar->fetchLastInsertLesson();
+$title =$one[0]['title'];
+$start = str_replace(' ','T',$one[0]['start_class']); 
+$end = str_replace(' ','T',$one[0]['end_class']);
+if(isset($_POST['submit'])){
 
-// echo $_POST['title'];
-// echo $_POST['heyo'];
+    $quick->insertEvent($one[0]['title'],$start,$end,'primary');
+}
 ?>
 
 
