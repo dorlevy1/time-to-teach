@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //  var start = $.fullCalendar.formatDate(start, "Y-MM-DD ");
         var title = "Lesson";
+        var etc = $('#etc').val();
         var time = $('.time_pick>.activate').text();
         var timeAfter = parseInt($('.time_pick>.activate').text()) + 1;
         if ($('.duration_pick>h5.activate').text() == '1') {
@@ -114,12 +115,13 @@ document.addEventListener('DOMContentLoaded', function() {
             type: "POST",
             data: {
                 title: title,
+                etc: etc,
                 start: start,
                 end: newEnd,
                 color: getRandomColor()
             },
             success: () => {
-                console.log(title, start, newEnd);
+                console.log(title, etc, start, newEnd);
                 $('.create_class').toggleClass('disabled');
                 calendar.refetchEvents();
                 alert('Successfully');

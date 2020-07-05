@@ -2,9 +2,9 @@
 require 'vendor/autoload.php';
 require_once 'Calendar.php';
 class quick{
-  static $event;
-  static $service;
-  static $client;
+  public $event;
+  public $service;
+  public $client;
   function __construct(){
   }
   /**
@@ -84,12 +84,12 @@ class quick{
   // Change the scope to Google_Service_Calendar::CALENDAR and delete any stored
   // credentials.
   
-    function insertEvent($title,$start,$end,$calendarId){
+    function insertEvent($title,$etc,$start,$end,$calendarId){
 
     $event = new Google_Service_Calendar_Event(array(
       'summary' => $title,
       'location' => 'Holon',
-      'description' => 'A chance to hear more about Google\'s developer products.',
+      'description' => $etc,
       'start' => array(
         'dateTime' => $start,
         'timeZone' => 'Asia/Jerusalem',
