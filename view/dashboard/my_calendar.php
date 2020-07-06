@@ -1,20 +1,37 @@
 <?php
 session_start();
-// require '../..//vendor/autoload.php';
 require_once '../../Model/User.php';
-require_once '../../Model/Calendar.php';
-// require_once '../../Model/quickstart.php';
 $user=new User();
-
+$quick = new quick();
 $usr = $user->fecthPersonalDetails()[0];
 $detail = $user->fetchUserDetails();
 // var_dump($detail);
 $calendar = new Calendar();
 $hours = $detail[0]['hours'];
 $class = $detail[0]['class_options'];
+$one = $calendar->fetchLastInsertLesson();
+$title =$one[0]['title'];
+$etc = $one[0]['description'];
+$start = str_replace(' ','T',$one[0]['start_class']); 
+$end = str_replace(' ','T',$one[0]['end_class']);
+if(isset($_POST['submit'])){
+    $quick->insertEvent($one[0]['title'],$etc,$start,$end,'primary');
+    header('Location: my_calendar');
+}
 
-// echo $_POST['title'];
-// echo $_POST['heyo'];
+// $url= "https://platform.clickatell.com/messages/http/send?apiKey=chzP4BJcTSG9XRyJS89npg==&to=972525938898&content=Test+message+text";
+// $ch = curl_init();
+
+// curl_setopt($ch, CURLOPT_URL, $url);
+//             curl_setopt($ch, CURLOPT_HEADER, TRUE);
+//             curl_setopt($ch, CURLOPT_NOBODY, TRUE); // remove body
+//             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+//             $head = curl_exec($ch);
+//             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+//             curl_close($ch);
+            
+
+            
 ?>
 
 
@@ -51,6 +68,10 @@ $class = $detail[0]['class_options'];
 <h5 name="<?php if($v == '1/2') {?>30:00<?php }elseif ($v == '3/4') {?>45:00<?php }elseif ($v == '1') {?>1:00:00<?php }elseif ($v == '1 1/2') {?>1:30:00<?php }elseif ($v == '2') {?>2:00:00<?php } ?>"><?=$v?></h5>
         </div>
         <?php } ?>
+        </div>
+        <div class="start_time" style="flex-direction:column;width:90%">
+        <label for="etc">Tell me</label>
+        <textarea name="etc" id="etc" cols="3" rows="3"></textarea>
         </div>
         <label for="student">Student Name</label>
         <select name="" id="">

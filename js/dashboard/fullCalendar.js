@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
         allDaySlot: false,
         dayMaxEvents: true,
         eventBackgroundColor: getRandomColor(),
-        events: '../../handler/fetchHandler.php',
+        events: {
+            url: '../../handler/fetchHandler.php',
+        },
+
         dateClick: function(arg) {
             $('form>h1').html(arg.dateStr + ' ');
         },
@@ -47,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
             $('#submit').on('click', (e) => {
-                e.preventDefault();
+                // e.preventDefault();
                 insertEvent();
                 window.location.replace('my_calendar');
             })
@@ -84,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //  var start = $.fullCalendar.formatDate(start, "Y-MM-DD ");
         var title = "Lesson";
+        var etc = $('#etc').val();
         var time = $('.time_pick>.activate').text();
         var timeAfter = parseInt($('.time_pick>.activate').text()) + 1;
         if ($('.duration_pick>h5.activate').text() == '1') {
@@ -111,12 +115,13 @@ document.addEventListener('DOMContentLoaded', function() {
             type: "POST",
             data: {
                 title: title,
+                etc: etc,
                 start: start,
                 end: newEnd,
                 color: getRandomColor()
             },
             success: () => {
-                console.log(title, start, newEnd);
+                console.log(title, etc, start, newEnd);
                 $('.create_class').toggleClass('disabled');
                 calendar.refetchEvents();
                 alert('Successfully');
