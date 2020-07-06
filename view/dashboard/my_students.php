@@ -6,9 +6,10 @@ $user=new User();
 $teacher = new Teacher();
 
 $usr = $user->fecthPersonalDetails()[0];
-$amount_students = $teacher->fetchStudents();
+$students = $teacher->fetchStudents();
+
 $amount_classes = $teacher->amountOfClasees();
-$amount_students =count($amount_students);
+$amount_students =count($students);
 $amount_classes =count($amount_classes);
 ?>
 
@@ -17,6 +18,7 @@ $amount_classes =count($amount_classes);
 <link rel="stylesheet" type="text/css" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/dashboard/nav.css">
 <link rel="stylesheet" href="../../css/dashboard/index.css">
+<link rel="stylesheet" href="../../css/dashboard/my_students.css">
 
 <?php include_once '../includes/end_head.php'?>
 <?php include_once '../includes/nav.php'?>
@@ -25,12 +27,22 @@ $amount_classes =count($amount_classes);
       <h1>My Students</h1>
     </div>
  <table>
- <tr>
+ <tr class="main_tr">
  <th>#</th>
- <th>Full Name</th>
+ <th class="fullname">Full Name</th>
  <th>Email/Number</th>
- <th>Update/Delete</th>
+ <th>City</th>
+ <th>Update / Delete</th>
  </tr>
+ <?php foreach($students as $student){?>
+ <tr>
+ <td><?=$student['id']?></td>
+ <td><?=$student['full_name']?></td>
+ <td><?=$student['email']?></td>
+ <td><?=$student['city']?></td>
+ <td>Update / Delete</td>
+ </tr>
+ <?php }?>
  </table>
 </div>
 <script src="../../js/dashboard/nav.js"></script>

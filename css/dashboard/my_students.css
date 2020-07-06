@@ -1,0 +1,26 @@
+table {
+    width: 95%;
+    margin: 0 auto;
+    /* border: 1px solid #5957575c; */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fullname {
+    width: 50%;
+}
+
+td {
+    text-align: center;
+    border-bottom: 1px solid #80808054;
+}
+
+.main_tr {
+    border-bottom: 15px solid black;
+    background: #ffc58a;
+}
+
+th,
+td {
+    padding: 10px;
+}
