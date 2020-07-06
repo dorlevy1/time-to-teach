@@ -11,6 +11,8 @@ $students = $teacher->fetchStudents();
 $amount_classes = $teacher->amountOfClasees();
 $amount_students =count($students);
 $amount_classes =count($amount_classes);
+$amount_students =count($amount_students);
+$amount_classes =count($amount_classes); //
 ?>
 
 
