@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once '../../Model/User.php';
-require '../../Model/quickstart.php';
 $user=new User();
 $quick = new quick();
 $usr = $user->fecthPersonalDetails()[0];
