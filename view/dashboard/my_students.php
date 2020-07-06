@@ -9,7 +9,7 @@ $usr = $user->fecthPersonalDetails()[0];
 $amount_students = $teacher->fetchStudents();
 $amount_classes = $teacher->amountOfClasees();
 $amount_students =count($amount_students);
-$amount_classes =count($amount_classes);
+$amount_classes =count($amount_classes); //
 ?>
 
 
