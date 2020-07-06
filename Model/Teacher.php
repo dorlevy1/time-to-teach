@@ -93,7 +93,7 @@ return $result = $sql->fetchAll();
      }
 
      function deleteStudent(){
-        $sql = $db->prepare("DELETE FROM datastudents WHERE student_id = ? AND teacher_id = ?");
+        $sql = $this->db->prepare("DELETE FROM datastudents WHERE student_id = ? AND teacher_id = ?");
         $sql->bindParam(1,$_POST['student_id']);
         $sql->bindParam(2,$_SESSION['user_id']);
         $sql->execute();
