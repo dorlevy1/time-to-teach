@@ -67,6 +67,12 @@
     height: 65%;
 }
 
+.box-top>p {
+    margin-top: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+
 .box-top>.title {
     background: #ffffff8a;
 }

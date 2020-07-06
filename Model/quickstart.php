@@ -103,7 +103,7 @@ class quick{
       ),
       'attendees' => array(
         array('email' => 'ddl105095@gmail.com'),
-        array('email' => 'dordylanlevywv@gmail.com'),
+        array('email' => 'r.benitah1@gmail.com'),
       ),
       'reminders' => array(
         'useDefault' => FALSE,

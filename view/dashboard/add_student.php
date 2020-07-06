@@ -8,7 +8,7 @@ $teacher=new Teacher();
 $usr = $user->fecthPersonalDetails()[0];
 
 if(isset($_POST['submit'])){
-$teacher->insertNewTeacher();
+$teacher->insertNewStudent();
 }
 
 ?>
@@ -51,9 +51,9 @@ $teacher->insertNewTeacher();
     <form action="" method="POST" enctype='multipart/form-data' class="flex-row">
     <div class="div">
 
-        <label for="name">Name</label>
+        <label for="name">Full Name*</label>
         <input type="text" name="name" id="name" placeholder="Your name ...">
-        <p>*Personal Name or Company Name!</p>
+        <p>*First Name and Last Name</p>
         
         <input type="submit" id="stageone" name="stageone" class="btn" value="Continue Next Stage"> 
     </div>
@@ -68,17 +68,15 @@ $teacher->insertNewTeacher();
 
     
     <label for="description">Tell about yourself..</label>
-    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+    <input type="text" name="email" id="email" placeholder="Your email ...">
     <p>*Min 60 letters.</p>
     <input id="stagethree" type="submit" class="btn" value="Continue Next Stage"> 
 </div>
 <div class="div">
 
     <label for="password">Password</label>
-    <input type="text" name="password" id="password">
-    <p>*Secondery Password for teacher panel</p>
-    <label for="teacher_pic">Teacher Picture</label>
-    <input id="stagefour" type="file" name="teacherfile" id="teacherfile"> 
+    <input type="password" name="password" id="password">
+    <p>*Password for the student</p>
     <input type="submit" id="submit" name="submit" class="btn" value="Continue Next Stage"> 
 </div>
     </form> 

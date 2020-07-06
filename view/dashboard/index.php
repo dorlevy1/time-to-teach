@@ -1,9 +1,15 @@
 <?php
 session_start();
 require_once '../../Model/User.php';
+require_once '../../Model/Teacher.php';
 $user=new User();
+$teacher = new Teacher();
 
 $usr = $user->fecthPersonalDetails()[0];
+$amount_students = $teacher->fetchStudents();
+$amount_classes = $teacher->amountOfClasees();
+$amount_students =count($amount_students);
+$amount_classes =count($amount_classes);
 ?>
 
 
@@ -20,16 +26,23 @@ $usr = $user->fecthPersonalDetails()[0];
             <div class="title">
                 Amount of Students 
             </div>
+            <p>
+            <?=$amount_students?>
+            </p>
         </div>
         <div class="box-top" style="background:#01c0c8">
             <div class="title">
                 Amount of payments
             </div>
+            
         </div>
         <div class="box-top" style="background:#7460ee">
             <div class="title">
                 Amount of classes
             </div>
+            <p>
+            <?=$amount_classes?>
+            </p>
         </div>
     </div>
     <div class="ganres flex-row ">
