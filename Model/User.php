@@ -79,7 +79,7 @@ class User{//
     }
          
     function fetchUserDetails(){
-        $sql= $this->db->prepare("SELECT * FROM user_details WHERE user_details.user_id = ?");
+        $sql= $this->db->prepare("SELECT * FROM teacher_details WHERE teacher_details.user_id = ?");
         $sql->bindParam(1,$_SESSION['user_id']);
         $sql->execute();
         $d =$sql->fetchAll(PDO::FETCH_ASSOC);

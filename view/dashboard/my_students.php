@@ -26,7 +26,10 @@ $amount_classes = count($amount_classes);
     <div class="flex-row top">
       <h1>My Students</h1>
     </div>
-    f
+   <p style="margin-left:40px"> 
+
+       Add New User <a href="add_student">+</a>
+   </p>
  <table>
  <tr class="main_tr">
  <th>#</th>

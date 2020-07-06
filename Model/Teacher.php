@@ -8,7 +8,7 @@ class Teacher{
 
     }
 
-    function insertNewStudent(){
+      function insertNewStudent(){
     //   $allowedExts = array("jpg", "jpeg", "gif", "png");
     //   $extension = pathinfo($_FILES['teacherfile']['name'], PATHINFO_EXTENSION);
     //   if (( ($_FILES["teacherfile"]["type"] == "image/jpeg")
@@ -22,19 +22,23 @@ class Teacher{
     //       }else{
             //   $newname = explode('.',$_FILES['teacherfile']['name']);
             //   $name = $newname[0] . date("Y-m-dH-i-s").'.'.$newname[1];
-      $sql = $this->db->prepare("INSERT INTO students (teacher_id,full_name,city,email,password) VALUES (?,?,?,?,?) ");
-      $sql->bindParam(1,$SESSION['user_id']);
-      $sql->bindParam(2,$_POST['name']);
-      $sql->bindParam(3,$_POST['city']);
+            $usertype = 2;
+      $sql = $this->db->prepare("INSERT INTO users (user_type,first_name,last_name,email,password) VALUES (?,?,?,?,?)");
+      $sql->bindParam(1,$usertype);
+      $sql->bindParam(2,$_POST['fname']);
+      $sql->bindParam(3,$_POST['lname']);
       $sql->bindParam(4,$_POST['email']);
       $password =password_hash($_POST['password'],PASSWORD_ARGON2ID);
       $sql->bindParam(5,$password);
     //   $sql->bindParam(6,$name);
-      $sql->execute();
+      $sql->execute();  
+         $last_id = $this->db->lastInsertId();
+         $sql = $this->db->prepare("INSERT INTO students (teacher_id,user_id) VALUES(?,?)");
+         $sql->execute([$_SESSION['user_id'],$last_id]);
+      header('Location: ./');
     //   $sql = $this->db->prepare("UPDATE users SET user_type = ? WHERE id=$id");
     //   $sql->bindParam(1,$usertype);
     //   $sql->execute();
-      header('Location: index.php');
 //       if (file_exists("../uploads/" . $name))
 //       {
 //           echo $name . " already exists. ";
