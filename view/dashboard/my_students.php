@@ -9,10 +9,8 @@ $usr = $user->fecthPersonalDetails()[0];
 $students = $teacher->fetchStudents();
 
 $amount_classes = $teacher->amountOfClasees();
-$amount_students =count($students);
-$amount_classes =count($amount_classes);
-$amount_students =count($amount_students);
-$amount_classes =count($amount_classes); //
+$amount_students = count($students);
+$amount_classes = count($amount_classes);
 ?>
 
 
@@ -28,6 +26,7 @@ $amount_classes =count($amount_classes); //
     <div class="flex-row top">
       <h1>My Students</h1>
     </div>
+    f
  <table>
  <tr class="main_tr">
  <th>#</th>
