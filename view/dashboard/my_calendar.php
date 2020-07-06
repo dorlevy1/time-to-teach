@@ -3,7 +3,7 @@ session_start();
 // require '../..//vendor/autoload.php';
 require_once '../../Model/User.php';
 require_once '../../Model/Calendar.php';
-require_once '../../Model/quickstart.php';
+// require_once '../../Model/quickstart.php';
 $user=new User();
 
 $usr = $user->fecthPersonalDetails()[0];
