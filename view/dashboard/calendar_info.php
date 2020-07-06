@@ -1,9 +1,11 @@
 <?php
 session_start();
 require_once '../../Model/Calendar.php';
+require_once '../../Model/Teacher.php';
 $calendar = new Calendar();
-$data =$calendar->fetchTeacherClasses();
-echo $data;
+$teacher = new Teacher();
+$data =$teacher->amountOfClasees();
+var_dump($data);
 ?>
 
 <div class="">
