@@ -34,7 +34,7 @@ class Teacher{
       $sql->execute();  
          $last_id = $this->db->lastInsertId();
          $sql = $this->db->prepare("INSERT INTO students (teacher_id,user_id) VALUES(?,?)");
-         $sql->execute([$_SESSION['user_id'],$last_id]);
+         $sql->execute([self::stam()[0]['teacher_id'],$last_id]);
       header('Location: ./');
     //   $sql = $this->db->prepare("UPDATE users SET user_type = ? WHERE id=$id");
     //   $sql->bindParam(1,$usertype);
@@ -55,7 +55,12 @@ class Teacher{
 // }
 
    }
- 
+   function stam(){
+      $sql= $this->db->prepare("SELECT * FROM students WHERE students.user_id = ?");
+      $sql->bindParam(1,$_SESSION['user_id']);
+  $sql->execute();
+return $result = $sql->fetchAll();
+  }
      function updateTeacher(){
          $sql = $this->db->prepare("UPDATE teachers SET study_category = ? ,freeday = ?,films =?,hoursavailable=? WHERE user_id= ?");
              $sql->bindParam(1,$_POST['study_category']);
