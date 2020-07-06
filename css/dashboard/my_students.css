@@ -24,3 +24,8 @@ th,
 td {
     padding: 10px;
 }
+
+a {
+    color: black;
+    text-decoration: none;
+}

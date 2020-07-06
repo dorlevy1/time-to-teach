@@ -1,5 +1,6 @@
 <?php
 require_once 'Connection.php';
+require_once 'User.php';
 class Teacher{
    public $db;
    
@@ -70,19 +71,48 @@ return $result = $sql->fetchAll();
              $sql->bindParam(5,$_SESSION['user_id']);
              $sql->execute();
      }
-     
+
      function fetchTeacherDetails(){
-        $sql= $this->db->prepare("SELECT * FROM user_details WHERE user_details.user_id = ?");
-        $sql->bindParam(1,$_SESSION['user_id']);
-        $sql->execute();
-        return $sql->fetch();
-     }
+      $user = new User();
+      if($user->fecthPersonalDetails()[0]['user_type']==2){
+      $sql= $this->db->prepare
+      ("SELECT * FROM teacher_details,students 
+      WHERE teacher_details.user_id = students.teacher_id 
+      AND students.user_id = ?");
+      } else {
+      $sql= $this->db->prepare("SELECT * FROM teacher_details 
+      WHERE teacher_details.user_id = ?");
+      }
+      $sql->bindParam(1,$_SESSION['user_id']);
+      $sql->execute();
+      $d =$sql->fetchAll(PDO::FETCH_ASSOC);
+          $data[]=[
+             'hours'=> $d[0]['available_hours'],
+             'class_options'=> $d[0]['class_option'],
+             'days'=> $d[0]['available_days']
+          ];
+      $data[0]['hours']=explode(',',$data[0]['hours']);
+      $data[0]['class_options']=explode(',',$data[0]['class_options']);
+
+for ($i=0; $i < count($data[0]['hours']) ; $i++) { 
+  $data[0]['hours'][$i] .= ':00';
+}
+
+return $data;
+  }
 
      function fetchStudents(){
          $sql = $this->db->prepare("SELECT * FROM users,students WHERE students.teacher_id = ? AND users.id = students.user_id ");
          $sql->bindParam(1,$_SESSION['user_id']);
          $sql->execute();
         return  $sql->fetchAll(PDO::FETCH_ASSOC);
+     }
+
+     function fetchStudent($user_id){
+      $sql = $this->db->prepare("SELECT first_name,last_name,students.age,students.birthday,city,phone,email FROM users INNER JOIN students WHERE users.id = ?");
+      $sql->bindParam(1,$user_id);
+      $sql->execute();
+     return  $sql->fetchAll(PDO::FETCH_ASSOC);
      }
      function amountOfClasees(){
             $sql = $this->db->prepare("SELECT * FROM classes WHERE classes.teacher_id = ?");

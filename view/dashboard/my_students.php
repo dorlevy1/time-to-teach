@@ -7,6 +7,10 @@ $teacher = new Teacher();
 
 $usr = $user->fecthPersonalDetails()[0];
 $students = $teacher->fetchStudents();
+if(isset($_REQUEST['update'])){
+$student=$teacher->fetchStudent($_GET['update'])[0];
+  
+}
 ?>
 
 
@@ -22,6 +26,10 @@ $students = $teacher->fetchStudents();
     <div class="flex-row top">
       <h1>My Students</h1>
     </div>
+<?php if(isset($_REQUEST['update'])){ ?>
+  <h1>Edit <?=$student['first_name'] . ' ' .$student['last_name']?></h1>
+<?php }?>   
+    
    <p style="margin-left:40px"> 
 
        Add New User <a href="add_student">+</a>
@@ -41,7 +49,7 @@ $students = $teacher->fetchStudents();
  <td><?=$student['first_name'].''.$student['last_name']?></td>
  <td><?=$student['email']?></td>
  <td><?=$student['city']?></td>
- <td>Update / Delete</td>
+ <td><a href="?update=<?=$student['user_id']?>">Update </a>/ <a href="?remove=<?=$student['user_id']?>">Delete</a></td>
  </tr>
  <?php }?>
  </table>
