@@ -1,12 +1,13 @@
 <?php
 require_once '../../Model/User.php';
+require_once '../../Model/Teacher.php';
 require_once '../../Model/quickstart.php';
 $calendar = new Calendar();
 $user=new User();
+$teacher=new Teacher();
 $quick = new quick();
 $usr = $user->fecthPersonalDetails()[0];
-$detail = $user->fetchUserDetails();
-// var_dump($detail);
+$detail = $teacher->fetchTeacherDetails();
 $hours = $detail[0]['hours'];
 $class = $detail[0]['class_options'];
 $one = $calendar->fetchLastInsertLesson();
