@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 require_once 'Connection.php';
 class Calendar{
     public $db;
@@ -10,17 +10,24 @@ class Calendar{
 // Print the next 10 events on the user's calendar.
     }
 
+    function stam(){
+        $sql= $this->db->prepare("SELECT * FROM students WHERE students.user_id = ?");
+        $sql->bindParam(1,$_SESSION['user_id']);
+    $sql->execute();
+return $result = $sql->fetchAll();
+    }
 
     function InsertNewClass($title,$etc,$start,$end,$color){
-        $sql =$this->db->prepare("INSERT INTO classes(teacher_id,title,key_id,description,start_class,end_class,color_class) VALUES(?,?,?,?,?,?,?)");
-        $sql->bindParam(1,$_SESSION['user_id']);
-        $sql->bindParam(2,$title);
-        $sql->bindParam(3,rand());
-        $sql->bindParam(4,$etc);
-        $sql->bindParam(5,$start);
-        $sql->bindParam(6,$end);
-        $sql->bindParam(7,$color);
-        $sql->execute();
+    $sql =$this->db->prepare("INSERT INTO classes(teacher_id,student_id,title,key_id,description,start_class,end_class,color_class) VALUES(?,?,?,?,?,?,?,?)");
+        $sql->bindParam(1,self::stam()[0]['teacher_id']);
+        $sql->bindParam(2,self::stam()[0]['user_id']);
+        $sql->bindParam(3,$title);
+        $sql->bindParam(4,rand());
+        $sql->bindParam(5,$etc);
+        $sql->bindParam(6,$start);
+        $sql->bindParam(7,$end);
+        $sql->bindParam(8,$color);
+        $sql->execute();    
         $last_id = $this->db->lastInsertId();
         $sql = $this->db->prepare("UPDATE classes SET key_id= ? WHERE id = ?");
         $sql->execute([$last_id,$last_id]);

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'Connection.php';
 class User{//
     public $db;
@@ -79,7 +80,7 @@ class User{//
     }
          
     function fetchUserDetails(){
-        $sql= $this->db->prepare("SELECT * FROM teacher_details WHERE teacher_details.user_id = ?");
+        $sql= $this->db->prepare("SELECT * FROM teacher_details,students WHERE teacher_details.user_id = students.teacher_id AND students.user_id = ?");
         $sql->bindParam(1,$_SESSION['user_id']);
         $sql->execute();
         $d =$sql->fetchAll(PDO::FETCH_ASSOC);
