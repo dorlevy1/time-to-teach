@@ -18,7 +18,6 @@ if(isset($_POST['submit'])){
             <div class="half-size meet-side">
                 <div class="form">
                     <div class="form-wrapper">
-    
                         <h1>Please Log in your <br> Account</h1>
                         <form action="" method="POST">
                             <div class="input">

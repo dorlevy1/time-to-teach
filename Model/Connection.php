@@ -1,7 +1,7 @@
 <?php
-define('DBCON','mysql:host=localhost;dbname=app;charset=utf8');
+define('DBCON','mysql:host=localhost;dbname=time-to-teach;charset=utf8');
 define('USR','root');
-define('PSW','');
+define('PSW','root');
 class DBConnection{
 
      private  $db;
