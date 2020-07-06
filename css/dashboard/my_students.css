@@ -29,3 +29,24 @@ a {
     color: black;
     text-decoration: none;
 }
+
+label {
+    width: 100px;
+}
+
+form {
+    margin: 0px 20%;
+    border: 1px solid #c2a68085;
+    padding: 10px 20px 1px 50px;
+    border-radius: 50px;
+    background: #faebd740;
+}
+
+.flex-row>input {
+    margin: 10px 73px;
+    width: 15%;
+}
+
+.top {
+    height: 100px !important;
+}

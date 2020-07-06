@@ -4,7 +4,6 @@ require_once '../../Model/User.php';
 require_once '../../Model/Teacher.php';
 $user=new User();
 $teacher = new Teacher();
-
 $usr = $user->fecthPersonalDetails()[0];
 $amount_students = $teacher->fetchStudents();
 $amount_classes = $teacher->amountOfClasees();
@@ -84,7 +83,7 @@ $amount_classes =count($amount_classes);
             <h1>Sent NoteMessage</h1>
             </div>
             <div class="icon">
-                <img src="../../images/dashboard/plus" alt="">
+                <img src="../../images/dashboard/plus.svg" alt="">
                 <img src="../../images/dashboard/message.svg" alt="">
 </div>
              </div>
