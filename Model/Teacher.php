@@ -112,7 +112,7 @@ return $data;
         if($user->fecthPersonalDetails()[0]['user_type']==2){
            $sql = $this->db->prepare("SELECT * FROM classes WHERE classes.student_id = ?");
          }else{
-            $sql = $this->db->prepare("SELECT * FROM classes WHERE classes.teachert_id = ?");
+            $sql = $this->db->prepare("SELECT * FROM classes WHERE classes.teacher_id = ?");
 
         }
             $sql->bindParam(1,$_SESSION['user_id']);
