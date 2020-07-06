@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'Connection.php';
 class Calendar{
     public $db;
@@ -47,9 +48,30 @@ if($r['key_id'] == $key){
     
 
 
-    function fetchAllClasses(){
+    function fetchStudentClasses(){
         $data=[];
-        $sql =$this->db->prepare("SELECT * FROM classes");
+        $dd=intVal($_SESSION['user_id']);
+        $sql =$this->db->prepare("SELECT * FROM classes WHERE classes.student_id = ?");
+        $sql->execute([$_SESSION['user_id']]);
+        $result =$sql->fetchAll();
+    
+    
+        foreach($result as $row){
+            $data[]=array(
+    
+                
+                'id'=>$row['id'],
+                'title'=>$row['title'],
+                'start'=>$row['start_class'],
+                'end'=>$row['end_class']
+            );    
+        }
+        echo json_encode($data);
+    }
+    function fetchTeacherClasses(){
+        $data=[];
+        $sql =$this->db->prepare("SELECT * FROM classes WHERE classes.teacher_id = ? ");
+        $sql->bindParam(1,$_SESSION['user_id']);
         $sql->execute();
         $result =$sql->fetchAll();
     

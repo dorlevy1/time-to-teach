@@ -52,7 +52,8 @@ $teacher->insertNewStudent();
     <div class="div">
 
         <label for="name">Full Name*</label>
-        <input type="text" name="name" id="name" placeholder="Your name ...">
+        <input type="text" name="fname" id="name" placeholder="Your First name ...">
+        <input type="text" name="lname" id="name" placeholder="Your Last name ...">
         <p>*First Name and Last Name</p>
         
         <input type="submit" id="stageone" name="stageone" class="btn" value="Continue Next Stage"> 

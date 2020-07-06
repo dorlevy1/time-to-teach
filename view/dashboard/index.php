@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 require_once '../../Model/User.php';
 require_once '../../Model/Teacher.php';
 $user=new User();
