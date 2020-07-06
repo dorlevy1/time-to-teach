@@ -7,10 +7,6 @@ $teacher = new Teacher();
 
 $usr = $user->fecthPersonalDetails()[0];
 $students = $teacher->fetchStudents();
-
-$amount_classes = $teacher->amountOfClasees();
-$amount_students = count($students);
-$amount_classes = count($amount_classes);
 ?>
 
 
@@ -40,8 +36,9 @@ $amount_classes = count($amount_classes);
  </tr>
  <?php foreach($students as $student){?>
  <tr>
- <td><?=$student['id']?></td>
- <td><?=$student['full_name']?></td>
+   
+ <td><?=$student['user_id']?></td>
+ <td><?=$student['first_name'].''.$student['last_name']?></td>
  <td><?=$student['email']?></td>
  <td><?=$student['city']?></td>
  <td>Update / Delete</td>

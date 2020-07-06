@@ -79,7 +79,7 @@ return $result = $sql->fetchAll();
      }
 
      function fetchStudents(){
-         $sql = $this->db->prepare("SELECT * FROM students WHERE students.teacher_id = ?");
+         $sql = $this->db->prepare("SELECT * FROM users,students WHERE students.teacher_id = ? AND users.id = students.user_id ");
          $sql->bindParam(1,$_SESSION['user_id']);
          $sql->execute();
         return  $sql->fetchAll(PDO::FETCH_ASSOC);
