@@ -8,7 +8,6 @@ class Teacher{
       $this->db = new PDO(DBCON, USR,PSW); //
 
     }
-
       function insertNewStudent(){
     //   $allowedExts = array("jpg", "jpeg", "gif", "png");
     //   $extension = pathinfo($_FILES['teacherfile']['name'], PATHINFO_EXTENSION);
@@ -35,7 +34,7 @@ class Teacher{
       $sql->execute();  
          $last_id = $this->db->lastInsertId();
          $sql = $this->db->prepare("INSERT INTO students (teacher_id,user_id) VALUES(?,?)");
-         $sql->execute([self::stam()[0]['teacher_id'],$last_id]);
+         $sql->execute([$_SESSION['user_id'],$last_id]);
       header('Location: ./');
     //   $sql = $this->db->prepare("UPDATE users SET user_type = ? WHERE id=$id");
     //   $sql->bindParam(1,$usertype);
@@ -56,12 +55,6 @@ class Teacher{
 // }
 
    }
-   function stam(){
-      $sql= $this->db->prepare("SELECT * FROM students WHERE students.user_id = ?");
-      $sql->bindParam(1,$_SESSION['user_id']);
-  $sql->execute();
-return $result = $sql->fetchAll();
-  }
      function updateTeacher(){
          $sql = $this->db->prepare("UPDATE teachers SET study_category = ? ,freeday = ?,films =?,hoursavailable=? WHERE user_id= ?");
              $sql->bindParam(1,$_POST['study_category']);
@@ -109,17 +102,41 @@ return $data;
      }
 
      function fetchStudent($user_id){
-      $sql = $this->db->prepare("SELECT first_name,last_name,students.age,students.birthday,city,phone,email FROM users INNER JOIN students WHERE users.id = ?");
+      $sql = $this->db->prepare("SELECT first_name,last_name,students.age,students.birthday,students.city,phone,email,namefile FROM users INNER JOIN students WHERE students.user_id = ? LIMIT 1");
       $sql->bindParam(1,$user_id);
       $sql->execute();
      return  $sql->fetchAll(PDO::FETCH_ASSOC);
      }
      function amountOfClasees(){
-            $sql = $this->db->prepare("SELECT * FROM classes WHERE classes.teacher_id = ?");
+        $user = new User();
+        if($user->fecthPersonalDetails()[0]['user_type']==2){
+           $sql = $this->db->prepare("SELECT * FROM classes WHERE classes.student_id = ?");
+         }else{
+            $sql = $this->db->prepare("SELECT * FROM classes WHERE classes.teachert_id = ?");
+
+        }
             $sql->bindParam(1,$_SESSION['user_id']);
             $sql->execute();
            return  $sql->fetchAll(PDO::FETCH_ASSOC);
         
+     }
+     function updateStudent($user_id){
+        $sql = $this->db->prepare("UPDATE users SET first_name = ?, last_name = ? , email = ? ,namefile = ? WHERE users.id = ?");
+        $sql->bindParam(1,$_POST['fname']);
+        $sql->bindParam(2,$_POST['lname']);
+        $sql->bindParam(3,$_POST['email']);
+        $sql->bindParam(4,$_POST['namefile']);
+        $sql->bindParam(5,$user_id);
+        $sql->execute();
+        $sql = $this->db->prepare("UPDATE students SET  age = ? , birthday = ?,phone = ?,city = ? WHERE students.user_id = ?");
+        $sql->bindParam(1,$_POST['age']);
+        $sql->bindParam(2,$_POST['birthday']);
+        $sql->bindParam(3,$_POST['phone']);
+        $sql->bindParam(4,$_POST['city']);
+        $sql->bindParam(5,$user_id);
+      $sql->execute();
+
+      header('Location: my_students?update='.$user_id);
      }
 
      function deleteStudent(){
