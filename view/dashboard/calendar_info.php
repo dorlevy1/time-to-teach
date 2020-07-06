@@ -1,15 +1,15 @@
 <?php
 
 require_once '../../Model/Calendar.php';
-
 $calendar = new Calendar();
-
-var_dump($calendar->fetchAllClasses());
+$data =json_decode($calendar->fetchAllClasses());
+print_r($data)
 
 ?>
 
-<div class="contaner-table">
+<div class="">
     <table border="1">
+    
         <thead>
             <tr>
                 <th>id</th>
@@ -18,10 +18,12 @@ var_dump($calendar->fetchAllClasses());
             </tr>
         </thead>
         <tbody>
+            <?php foreach($data as $d):?>
             <tr>
-                <td></td>
+                <td><?= $d->title?> </td>
             </tr>
-            
+            <?php endforeach;?>
         </tbody>
+        
     </table>
 </div>
