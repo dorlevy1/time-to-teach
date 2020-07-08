@@ -66,8 +66,7 @@ class Teacher{
      }
 
      function fetchTeacherDetails(){
-      $user = new User();
-      if($user->fecthPersonalDetails()[0]['user_type']==2){
+      if($_SESSION['user_type']==2){
       $sql= $this->db->prepare
       ("SELECT * FROM teacher_details,students 
       WHERE teacher_details.user_id = students.teacher_id 
@@ -108,8 +107,7 @@ return $data;
      return  $sql->fetchAll(PDO::FETCH_ASSOC);
      }
      function amountOfClasees(){
-        $user = new User();
-        if($user->fecthPersonalDetails()[0]['user_type']==2){
+        if($_SESSION['user_type']==2){
            $sql = $this->db->prepare("SELECT * FROM classes WHERE classes.student_id = ?");
          }else{
             $sql = $this->db->prepare("SELECT * FROM classes WHERE classes.teacher_id = ?");
