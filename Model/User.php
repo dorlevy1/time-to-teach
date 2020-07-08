@@ -60,6 +60,8 @@ class User{//
         if(password_verify($_POST['password'],$user['password'])){
             $_SESSION['user_id']= $user['id'];
             $_SESSION['login'] = true;
+            $_SESSION['user_type'] = $user['user_type'];
+
             header('Location: dashboard/index.php');  
               }else{
                 return false;
