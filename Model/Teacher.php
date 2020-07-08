@@ -145,4 +145,4 @@ return $data;
      }
 }
 
-$teacher = new Teacher();
+$teacher = new Teacher();//
